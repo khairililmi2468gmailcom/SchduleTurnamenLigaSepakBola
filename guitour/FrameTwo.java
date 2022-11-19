@@ -93,7 +93,7 @@ public class FrameTwo extends JFrame {
 			array_rowWeight[i]=1.0;	//diguakan untuk rowWeight
 		}
 		ArrayList<JPanel> list_pert = new ArrayList<JPanel>();
-		final ArrayList<JTextField> list_score = new ArrayList<JTextField>();	//tempat tampung score
+		ArrayList<JTextField> list_score = new ArrayList<JTextField>();	//tempat tampung score
 		JPanel panel = new JPanel();
 		scrollPane.setViewportView(panel);
 		//tabbedPane.addTab("New tab", null, panel, null);
