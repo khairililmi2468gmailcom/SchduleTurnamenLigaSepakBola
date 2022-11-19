@@ -1,12 +1,11 @@
+package guitour;
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- *
- * @author Khairil Ilmi
- */
+
 public class Pertandingan {
     
     private Club teamHome;

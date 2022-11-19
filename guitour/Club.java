@@ -1,3 +1,6 @@
+package guitour;
+
+
 public class Club {
     private String nama;
     private int menang;

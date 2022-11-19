@@ -1,11 +1,21 @@
+package guitour;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Liga {
-    private ArrayList<Pertandingan> listPertandingan = new ArrayList<Pertandingan>();
-    private ArrayList<Club> listClub = new ArrayList<Club>();
+    ArrayList<Pertandingan> listPertandingan = new ArrayList<Pertandingan>();
+    ArrayList<Club> listClub = new ArrayList<Club>();
     private int jmlClub;
     private int jmlPertandingan;
+    public Liga(String list_club){
+        generateClubs(list_club);
+        generatePertandingan();
+        //System.out.println("Jumlah Club : "+getjmlClub());
+        //System.out.println("Jumlah Pertandingan : "+getjmlPertandingan());
+        //getListClub();
+        //getListPertandingan();
+    }
     public Liga(){
         generateClubs();
         generatePertandingan();
@@ -66,6 +76,7 @@ public class Liga {
         jmlClub = clubNames.length;
         for(int i=0; i<jmlClub; i++){
             listClub.add(new Club(clubNames[i]));
+            System.out.println(clubNames[i]);
         }
     }
     public void getListClub(){
@@ -79,5 +90,8 @@ public class Liga {
         for(int i=0; i<listPertandingan.size(); i++){
             System.out.println(listPertandingan.get(i));
         }
+    }
+    public Pertandingan getPertandingan(int x){
+        return listPertandingan.get(x);
     }
 }
