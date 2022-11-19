@@ -84,7 +84,7 @@ public class FrameTwo extends JFrame {
 		
 		//JPanel panel_1 = new JPanel();
 		//scrollPane.setViewportView(panel_1);
-		final Liga match = new Liga(list_club);		//create Liga object
+		Liga match = new Liga(list_club);		//create Liga object
 		int jml_pertandingan=match.getjmlPertandingan();		//nanti diambil dari jumlah pertandingan yang telah di generate
 		int[] array_rowHeight = new int[jml_pertandingan];
 		double[] array_rowWeight = new double[jml_pertandingan];
