@@ -10,13 +10,12 @@ import java.util.Scanner;
  *
  * @author Khairil Ilmi
  */
-public class Liga implements InterfaceClass {
+public class Liga {
 
     private final int jumlahClub;
-
-    private final ArrayList<Club> liga;
-    private final Scanner input;
-    private final ArrayList<Pertandingan> pertandingan;
+    private ArrayList<Club> liga;
+    private Scanner input;
+    private ArrayList<Pertandingan> pertandingan;
     public Liga(int jumlahClub) {
 
         this.jumlahClub = jumlahClub;
@@ -209,18 +208,18 @@ public class Liga implements InterfaceClass {
         away.setmatchPertandingan(away.getmatchPertandingan() + 1);
 
         if (homeGoals > awayGoals) {
-            home.setpoin(home.getpoin() + 3);
+            home.setPoin(home.getpoin() + 3);
             home.setmenang(home.getmenang() + 1);
             away.setkalah(away.getkalah() + 1);
         }
 
         else if (homeGoals < awayGoals) {
-            away.setpoin(away.getpoin() + 3);
+            away.setPoin(away.getpoin() + 3);
             away.setmenang(away.getmenang() + 1);
             home.setkalah(home.getkalah() + 1);
         } else {
-            home.setpoin(home.getpoin() + 1);
-            away.setpoin(away.getpoin() + 1);
+            home.setPoin(home.getpoin() + 1);
+            away.setPoin(away.getpoin() + 1);
             home.setseri(home.getseri() + 1);
             away.setseri(away.getseri() + 1);
         }

@@ -1,10 +1,6 @@
 
 import java.util.Comparator;
 
-/**
- *
- * @author khairil ilmi
- */
 public class PembandingClub implements Comparator<Club> {
 
     @Override
