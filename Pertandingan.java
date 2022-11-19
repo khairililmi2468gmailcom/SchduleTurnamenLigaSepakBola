@@ -1,4 +1,6 @@
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -50,7 +52,11 @@ public class Pertandingan {
         this.teamAwayScore = teamAwayScore;
     }
     
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(String Sdate) throws ParseException {
+
+        this.date = new SimpleDateFormat("dd/MM/yyyy").parse(Sdate);
+    }
+    public String toString(){
+        return getteamHome()+"[vs]"+getteamAway();
     }
 }

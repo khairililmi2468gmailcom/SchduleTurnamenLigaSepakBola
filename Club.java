@@ -1,5 +1,5 @@
-public class Club extends PertandinganClub {
-    
+public class Club {
+    private String nama;
     private int menang;
     private int seri;
     private int kalah;
@@ -7,6 +7,12 @@ public class Club extends PertandinganClub {
     private int bobol;
     private int poin;
     private int matchPertandingan;
+    public Club(String nama){
+        this.nama = nama;
+    }
+    public String getNama(){
+        return this.nama;
+    }
     public int getkalah(){
         return kalah;
     }
@@ -27,6 +33,9 @@ public class Club extends PertandinganClub {
     }
     public int getmatchPertandingan() {
         return matchPertandingan;
+    }
+    public void setNama(String nama){
+        this.nama=nama;
     }
     public void setmenang(int i) {
         menang=i;
@@ -49,5 +58,7 @@ public class Club extends PertandinganClub {
     public void setmatchPertandingan(int i){
         matchPertandingan = i;
     }
-    
+    public String toString(){
+        return getNama();
+    }
 }
