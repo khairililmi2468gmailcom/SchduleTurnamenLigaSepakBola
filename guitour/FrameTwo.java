@@ -94,11 +94,86 @@ public class FrameTwo extends JFrame {
 		ArrayList<JPanel> list_pert = new ArrayList<JPanel>();
 		ArrayList<JTextField> list_score = new ArrayList<JTextField>();	//tempat tampung score
 		
+
+		// source code Klasemen 
+		
 		JScrollPane Klasemen = new JScrollPane();
 		tabbedPane.addTab("Klasemen", null, Klasemen, null);
 		
-		JPanel panel_1 = new JPanel();
-		Klasemen.setColumnHeaderView(panel_1);
+		//JPanel panelklasemen = new JPanel();
+		//Klasemen.setColumnHeaderView(panelklasemen);
+		
+		// source code tabel 
+		
+		list = new javax.swing.JTable();
+
+		list.setForeground(new java.awt.Color(51, 51, 51));
+
+		list.setModel(new javax.swing.table.DefaultTableModel(
+		    new Object [][] {
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null},
+		        {null, null, null, null, null, null, null, null, null}
+		    },
+		    new String [] {
+		        "No", "CLUB", "MAIN", "MENANG", "SERI", "KALAH", "GOAL", "KEBOBOLAN", "POIN"
+		    }
+		) {
+		    Class[] types = new Class [] {
+		        java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+		    };
+
+		    public Class getColumnClass(int columnIndex) {
+		        return types [columnIndex];
+		    }
+		});
+
+		list.setGridColor(new java.awt.Color(204, 204, 204));
+
+		list.setOpaque(false);
+
+		list.setSelectionBackground(new java.awt.Color(0, 153, 204));
+
+		list.setSelectionForeground(new java.awt.Color(255, 255, 255));
+
+		//dok.setViewportView(list);
+		//Klasemen.setColumnHeaderView(list);
+		Klasemen.setViewportView(list);
+		
+		// Klasemen
+		
+		
+		// source code History Match
 		
 		JScrollPane HistoryMatch = new JScrollPane();
 		tabbedPane.addTab("History Match", null, HistoryMatch, null);
@@ -187,6 +262,12 @@ public class FrameTwo extends JFrame {
 		gbc_panel_6_1.gridx = 0;
 		gbc_panel_6_1.gridy = 4;
 		panel_1_1.add(panel_6_1, gbc_panel_6_1);
+		
+		
+		// History Match 
+		
+		
+		// source code Update Match
 		
 		JScrollPane MatchUpdate = new JScrollPane();
 		MatchUpdate.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
