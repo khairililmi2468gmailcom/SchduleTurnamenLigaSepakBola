@@ -1,9 +1,6 @@
 package guitour;
 
-
-
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -40,6 +37,11 @@ public class FrameTwo extends JFrame {
 	private JTextField txtScore;
 	private JTextField textField;
 	private String list_club;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
 
 	public void setlist_club(String s){
 		this.list_club=s;
@@ -64,9 +66,10 @@ public class FrameTwo extends JFrame {
 	 * Create the frame.
 	 */
 	public FrameTwo(String list_str) {
+		setUndecorated(false);
 		setlist_club(list_str);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 608, 413);
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -75,12 +78,8 @@ public class FrameTwo extends JFrame {
 		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(5, 32, 440, 234);
+		tabbedPane.setBounds(5, 32, 603, 381);
 		contentPane.add(tabbedPane);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		tabbedPane.addTab("Match Update", null, scrollPane, null);
 		
 		//JPanel panel_1 = new JPanel();
 		//scrollPane.setViewportView(panel_1);
@@ -94,21 +93,18 @@ public class FrameTwo extends JFrame {
 		}
 		ArrayList<JPanel> list_pert = new ArrayList<JPanel>();
 		ArrayList<JTextField> list_score = new ArrayList<JTextField>();	//tempat tampung score
-		JPanel panel = new JPanel();
-		scrollPane.setViewportView(panel);
-		//tabbedPane.addTab("New tab", null, panel, null);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{400};
-		gbl_panel.rowHeights = array_rowHeight;
-		gbl_panel.columnWeights = new double[]{1.0};
-		gbl_panel.rowWeights = array_rowWeight;
-		panel.setLayout(gbl_panel);
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		tabbedPane.addTab("New tab", null, scrollPane_1, null);
+		JScrollPane Klasemen = new JScrollPane();
+		tabbedPane.addTab("Klasemen", null, Klasemen, null);
+		
+		JPanel panel_1 = new JPanel();
+		Klasemen.setColumnHeaderView(panel_1);
+		
+		JScrollPane HistoryMatch = new JScrollPane();
+		tabbedPane.addTab("History Match", null, HistoryMatch, null);
 		
 		JPanel panel_1_1 = new JPanel();
-		scrollPane_1.setViewportView(panel_1_1);
+		HistoryMatch.setViewportView(panel_1_1);
 		GridBagLayout gbl_panel_1_1 = new GridBagLayout();
 		gbl_panel_1_1.columnWidths = new int[]{400, 0};
 		gbl_panel_1_1.rowHeights = new int[]{50, 50, 50, 50, 50, 0};
@@ -192,7 +188,66 @@ public class FrameTwo extends JFrame {
 		gbc_panel_6_1.gridy = 4;
 		panel_1_1.add(panel_6_1, gbc_panel_6_1);
 		
+		JScrollPane MatchUpdate = new JScrollPane();
+		MatchUpdate.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		tabbedPane.addTab("Match Update", null, MatchUpdate, null);
+		JPanel panel = new JPanel();
+		MatchUpdate.setViewportView(panel);
+		panel.setLayout(null);
+		
+		JLabel lblEnterDate = new JLabel("Enter Date : ");
+		lblEnterDate.setBounds(88, 33, 89, 15);
+		lblEnterDate.setVerticalTextPosition(SwingConstants.TOP);
+		lblEnterDate.setVerticalAlignment(SwingConstants.TOP);
+		panel.add(lblEnterDate);
+		
+		JLabel lblTeamA = new JLabel("Team A : ");
+		lblTeamA.setBounds(88, 106, 70, 15);
+		panel.add(lblTeamA);
+		
+		JLabel lblTeamB = new JLabel("Team B :");
+		lblTeamB.setBounds(348, 106, 70, 15);
+		panel.add(lblTeamB);
+		
+		JLabel lblTeamAGoal = new JLabel("Team A Goal :");
+		lblTeamAGoal.setBounds(88, 187, 120, 15);
+		panel.add(lblTeamAGoal);
+		
+		JLabel lblTeamBGoal = new JLabel("Team B Goal :");
+		lblTeamBGoal.setBounds(348, 187, 120, 15);
+		panel.add(lblTeamBGoal);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(88, 60, 136, 19);
+		panel.add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(88, 133, 136, 19);
+		panel.add(textField_2);
+		textField_2.setColumns(10);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(88, 214, 136, 19);
+		panel.add(textField_3);
+		textField_3.setColumns(10);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(348, 133, 136, 19);
+		panel.add(textField_4);
+		textField_4.setColumns(10);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(348, 214, 136, 19);
+		panel.add(textField_5);
+		textField_5.setColumns(10);
+		
+		JButton btnNewButton_1 = new JButton("Enter ");
+		btnNewButton_1.setBounds(229, 272, 117, 25);
+		panel.add(btnNewButton_1);
+		
 		JButton btnNewButton = new JButton("Update");
+		btnNewButton.setBounds(12, 0, 114, 27);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int z=0;
@@ -207,7 +262,6 @@ public class FrameTwo extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(12, 0, 80, 27);
 		contentPane.add(btnNewButton);
 		for(int i=0; i<jml_pertandingan; i++) {
 			JPanel pert = new JPanel();		//panel pert(per baris)
