@@ -31,6 +31,9 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.BevelBorder;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class FrameTwo extends JFrame {
 
@@ -38,6 +41,8 @@ public class FrameTwo extends JFrame {
 	private JTextField txtScore;
 	private JTextField textField;
 	private String list_club;
+	private JTable table;
+	private JTable table_1;
 
 	public void setlist_club(String s){
 		this.list_club=s;
@@ -70,11 +75,9 @@ public class FrameTwo extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(5, 32, 440, 234);
-		contentPane.add(tabbedPane);
+		tabbedPane.setBounds(5, 37, 440, 234);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -155,7 +158,28 @@ public class FrameTwo extends JFrame {
 		lblVs.setBounds(202, 10, 27, 17);
 		panel_2_1.add(lblVs);
 		
+		JScrollPane Klasemen = new JScrollPane();
+		tabbedPane.addTab("Klasemen", null, Klasemen, null);
+		
+		table = new JTable();	//tabel Klasemen
+		DefaultTableModel model = new DefaultTableModel(new Object[0][10],
+				new String[] {
+						"No", "Tim", "PD", "M", "S", "K", "GM", "GK", "SG", "P"
+					}
+				);
+		
+		for(int i=0; i<match.getjmlClub(); i++) {
+			Object[] row_data = {String.valueOf(i+1), match.getClub(i).getNama(), "0", String.valueOf(match.getClub(i).getmenang()), String.valueOf(match.getClub(i).getseri()), 
+					String.valueOf(match.getClub(i).getkalah()), String.valueOf(match.getClub(i).getgoal()), String.valueOf(match.getClub(i).getbobol()),
+					String.valueOf(match.getClub(i).getselisihGoal()), String.valueOf(match.getClub(i).getpoin())};
+			model.addRow(row_data);
+		}
+		
+		table.setModel(model);
+		Klasemen.setViewportView(table);
+		
 		JButton btnNewButton = new JButton("Update");
+		btnNewButton.setBounds(12, 5, 80, 27);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int z=0;
@@ -174,8 +198,29 @@ public class FrameTwo extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(12, 0, 80, 27);
+		contentPane.setLayout(null);
 		contentPane.add(btnNewButton);
+		contentPane.add(tabbedPane);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		tabbedPane.addTab("New tab", null, scrollPane_2, null);
+		
+		table_1 = new JTable();
+		table_1.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"tes", "dff", null, null},
+				{null, null, null, null},
+				{null, null, "vfv", null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+			},
+			new String[] {
+				"New column", "New column", "New column", "New column"
+			}
+		));
+		scrollPane_2.setViewportView(table_1);
 		for(int i=0; i<jml_pertandingan; i++) {
 			JPanel pert = new JPanel();		//panel pert(per baris)
 			pert.setBorder(new LineBorder(new Color(0, 0, 0)));
