@@ -1,5 +1,4 @@
 package guitour;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -73,11 +72,12 @@ public class Liga {
      */
     public void generateClubs(String textList){
         String[] clubNames = textList.split(System.lineSeparator());
-        jmlClub = clubNames.length;
-        for(int i=0; i<jmlClub; i++){
+        for(int i=0; i<clubNames.length; i++){
+            if(clubNames[i] == "") continue;
             listClub.add(new Club(clubNames[i]));
             System.out.println(clubNames[i]);
         }
+        jmlClub=listClub.size();
     }
     public void getListClub(){
         System.out.println("List Club : ");
@@ -94,4 +94,9 @@ public class Liga {
     public Pertandingan getPertandingan(int x){
         return listPertandingan.get(x);
     }
+    public Club getClub(int x) {
+    	return listClub.get(x);
+    }
+    
 }
+

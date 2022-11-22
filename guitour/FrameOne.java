@@ -1,7 +1,5 @@
 package guitour;
 
-
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -24,7 +22,6 @@ public class FrameOne extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	String list_club;
 
 	/**
 	 * Launch the application.
@@ -81,7 +78,7 @@ public class FrameOne extends JFrame {
 		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				list_club=txtrHere.getText();
+				String list_club=txtrHere.getText();
 				//System.out.print(list_club);
 				//System.out.println("Hey BRo");
 				FrameTwo ft = new FrameTwo(list_club);

@@ -1,7 +1,5 @@
 package guitour;
 
-
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -84,7 +82,7 @@ public class FrameTwo extends JFrame {
 		
 		//JPanel panel_1 = new JPanel();
 		//scrollPane.setViewportView(panel_1);
-		Liga match = new Liga(list_club);		//create Liga object
+		final Liga match = new Liga(list_club);		//create Liga object
 		int jml_pertandingan=match.getjmlPertandingan();		//nanti diambil dari jumlah pertandingan yang telah di generate
 		int[] array_rowHeight = new int[jml_pertandingan];
 		double[] array_rowWeight = new double[jml_pertandingan];
@@ -93,7 +91,7 @@ public class FrameTwo extends JFrame {
 			array_rowWeight[i]=1.0;	//diguakan untuk rowWeight
 		}
 		ArrayList<JPanel> list_pert = new ArrayList<JPanel>();
-		ArrayList<JTextField> list_score = new ArrayList<JTextField>();	//tempat tampung score
+		final ArrayList<JTextField> list_score = new ArrayList<JTextField>();	//tempat tampung score
 		JPanel panel = new JPanel();
 		scrollPane.setViewportView(panel);
 		//tabbedPane.addTab("New tab", null, panel, null);
@@ -140,14 +138,14 @@ public class FrameTwo extends JFrame {
 		
 		txtScore = new JTextField();
 		txtScore.setHorizontalAlignment(SwingConstants.CENTER);
-		txtScore.setText("0");
+		txtScore.setText(null);
 		txtScore.setBounds(155, 10, 21, 21);
 		panel_2_1.add(txtScore);
 		txtScore.setColumns(10);
 		
 		textField = new JTextField();
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setText("0");
+		textField.setText(null);
 		textField.setColumns(10);
 		textField.setBounds(250, 10, 21, 21);
 		panel_2_1.add(textField);
@@ -157,41 +155,6 @@ public class FrameTwo extends JFrame {
 		lblVs.setBounds(202, 10, 27, 17);
 		panel_2_1.add(lblVs);
 		
-		JPanel panel_3_1 = new JPanel();
-		panel_3_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		GridBagConstraints gbc_panel_3_1 = new GridBagConstraints();
-		gbc_panel_3_1.fill = GridBagConstraints.BOTH;
-		gbc_panel_3_1.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_3_1.gridx = 0;
-		gbc_panel_3_1.gridy = 1;
-		panel_1_1.add(panel_3_1, gbc_panel_3_1);
-		
-		JPanel panel_4_1 = new JPanel();
-		panel_4_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		GridBagConstraints gbc_panel_4_1 = new GridBagConstraints();
-		gbc_panel_4_1.fill = GridBagConstraints.BOTH;
-		gbc_panel_4_1.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_4_1.gridx = 0;
-		gbc_panel_4_1.gridy = 2;
-		panel_1_1.add(panel_4_1, gbc_panel_4_1);
-		
-		JPanel panel_5_1 = new JPanel();
-		panel_5_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		GridBagConstraints gbc_panel_5_1 = new GridBagConstraints();
-		gbc_panel_5_1.fill = GridBagConstraints.BOTH;
-		gbc_panel_5_1.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_5_1.gridx = 0;
-		gbc_panel_5_1.gridy = 3;
-		panel_1_1.add(panel_5_1, gbc_panel_5_1);
-		
-		JPanel panel_6_1 = new JPanel();
-		panel_6_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		GridBagConstraints gbc_panel_6_1 = new GridBagConstraints();
-		gbc_panel_6_1.fill = GridBagConstraints.BOTH;
-		gbc_panel_6_1.gridx = 0;
-		gbc_panel_6_1.gridy = 4;
-		panel_1_1.add(panel_6_1, gbc_panel_6_1);
-		
 		JButton btnNewButton = new JButton("Update");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -199,9 +162,9 @@ public class FrameTwo extends JFrame {
 				for(int i=0; i<match.getjmlPertandingan(); i++) {
 						match.getPertandingan(i).setteamHomeScore(Integer.parseInt(list_score.get(z).getText()));
 						match.getPertandingan(i).setteamAwayScore(Integer.parseInt(list_score.get(z+1).getText()));
-						System.out.println(list_score.get(z).getText()+list_score.get(z+1).getText());
-						z+=2;
-						//System.out.println(match.getPertandingan(i).getteamHomeScore()+","+match.getPertandingan(i).getteamAwayScore());
+						//System.out.println(list_score.get(z).getText()+list_score.get(z+1).getText());
+						System.out.println(match.getPertandingan(i).getteamHomeScore()+"--"+match.getPertandingan(i).getteamAwayScore());
+						z+=2;	//update index for list_score
 					
 					
 				}
@@ -235,19 +198,19 @@ public class FrameTwo extends JFrame {
 			
 			txtScore = new JTextField();
 			txtScore.setHorizontalAlignment(SwingConstants.CENTER);
-			txtScore.setText("0");
+			txtScore.setText(null);
 			txtScore.setBounds(155, 10, 21, 21);
 			list_pert.get(i).add(txtScore);
 			txtScore.setColumns(10);
 			list_score.add(txtScore);
 			
-			textField = new JTextField();
-			textField.setHorizontalAlignment(SwingConstants.CENTER);
-			textField.setText("0");
-			textField.setColumns(10);
-			textField.setBounds(250, 10, 21, 21);
-			list_pert.get(i).add(textField);
-			list_score.add(textField);
+			txtScore = new JTextField();
+			txtScore.setHorizontalAlignment(SwingConstants.CENTER);
+			txtScore.setText(null);
+			txtScore.setColumns(10);
+			txtScore.setBounds(250, 10, 21, 21);
+			list_pert.get(i).add(txtScore);
+			list_score.add(txtScore);
 			
 			JLabel lblvsCenter = new JLabel("VS");
 			lblvsCenter.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 16));

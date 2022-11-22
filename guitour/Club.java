@@ -1,15 +1,15 @@
 package guitour;
 
-
 public class Club {
     private String nama;
+    private int matchPertandingan;
     private int menang;
     private int seri;
     private int kalah;
     private int goal;
     private int bobol;
+    private int selisihGoal;
     private int poin;
-    private int matchPertandingan;
     public Club(String nama){
         this.nama = nama;
     }
@@ -31,7 +31,12 @@ public class Club {
     public int getbobol() {
         return bobol;
     }
+    public int getselisihGoal(){
+        selisihGoal=goal-bobol;
+        return selisihGoal;
+    }
     public int getpoin() {
+        poin = (3*menang) + seri;
         return poin;
     }
     public int getmatchPertandingan() {
