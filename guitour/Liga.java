@@ -97,6 +97,34 @@ public class Liga {
     public Club getClub(int x) {
     	return listClub.get(x);
     }
-    
+    public void UpdateClub(){
+        int temp = 0;
+        int goal = 0;
+        int bobol = 0;
+        // for(int i = 0; i<jmlClub; i++){
+        //     for(int j=i+1; j<jmlClub; j++){
+        //             homescore += getPertandingan(temp).getteamHomeScore();
+        //             awayscore += getPertandingan(temp).getteamAwayScore();
+        //             System.out.println("Match ke "+ temp+ " Updated");
+        //             listClub.get(i).setgoal(homescore);
+        //             //listClub.get(j).setgoal(getPertandingan(temp).getteamAwayScore()); 
+        //             System.out.println(getPertandingan(temp).getteamHomeScore()+"-"+getPertandingan(temp).getteamAwayScore());
+        //             temp++;    
+        //     }
+        //     homescore=0;
+        // }
+        for(int i = 0; i<jmlClub; i++){
+            for(int j=i+1; j<jmlClub; j++){
+                goal += getPertandingan(temp).getteamHomeScore();
+                bobol += getPertandingan(temp).getteamAwayScore();
+                temp++;
+                
+            }
+            listClub.get(i).setbobol(bobol);
+            listClub.get(i).setgoal(goal);
+            goal=0;
+        }
+    }
+
 }
 

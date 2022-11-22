@@ -19,6 +19,7 @@ import java.awt.BorderLayout;
 import javax.swing.ScrollPaneConstants;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
@@ -38,11 +39,8 @@ import javax.swing.GroupLayout.Alignment;
 public class FrameTwo extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtScore;
-	private JTextField textField;
 	private String list_club;
-	private JTable table;
-	private JTable table_1;
+	private JTable klasemenTabel;
 
 	public void setlist_club(String s){
 		this.list_club=s;
@@ -105,64 +103,11 @@ public class FrameTwo extends JFrame {
 		gbl_panel.rowWeights = array_rowWeight;
 		panel.setLayout(gbl_panel);
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		tabbedPane.addTab("New tab", null, scrollPane_1, null);
-		
-		JPanel panel_1_1 = new JPanel();
-		scrollPane_1.setViewportView(panel_1_1);
-		GridBagLayout gbl_panel_1_1 = new GridBagLayout();
-		gbl_panel_1_1.columnWidths = new int[]{400, 0};
-		gbl_panel_1_1.rowHeights = new int[]{50, 50, 50, 50, 50, 0};
-		gbl_panel_1_1.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_1_1.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		panel_1_1.setLayout(gbl_panel_1_1);
-		
-		JPanel panel_2_1 = new JPanel();
-		panel_2_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2_1.setLayout(null);
-		GridBagConstraints gbc_panel_2_1 = new GridBagConstraints();
-		gbc_panel_2_1.fill = GridBagConstraints.BOTH;
-		gbc_panel_2_1.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_2_1.gridx = 0;
-		gbc_panel_2_1.gridy = 0;
-		panel_1_1.add(panel_2_1, gbc_panel_2_1);
-		
-		JLabel lblNewLabel = new JLabel("Team 1");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel.setFont(new Font("Monospaced", Font.BOLD, 12));
-		lblNewLabel.setBounds(12, 12, 125, 17);
-		panel_2_1.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Team 2");
-		lblNewLabel_1.setFont(new Font("Monospaced", Font.BOLD, 12));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1.setBounds(280, 12, 125, 17);
-		panel_2_1.add(lblNewLabel_1);
-		
-		txtScore = new JTextField();
-		txtScore.setHorizontalAlignment(SwingConstants.CENTER);
-		txtScore.setText(null);
-		txtScore.setBounds(155, 10, 21, 21);
-		panel_2_1.add(txtScore);
-		txtScore.setColumns(10);
-		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setText(null);
-		textField.setColumns(10);
-		textField.setBounds(250, 10, 21, 21);
-		panel_2_1.add(textField);
-		
-		JLabel lblVs = new JLabel("VS");
-		lblVs.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 16));
-		lblVs.setBounds(202, 10, 27, 17);
-		panel_2_1.add(lblVs);
-		
 		JScrollPane Klasemen = new JScrollPane();
 		tabbedPane.addTab("Klasemen", null, Klasemen, null);
 		
-		table = new JTable();	//tabel Klasemen
-		DefaultTableModel model = new DefaultTableModel(new Object[0][10],
+		klasemenTabel = new JTable();	//tabel Klasemen
+		final DefaultTableModel model = new DefaultTableModel(new Object[0][10],
 				new String[] {
 						"No", "Tim", "PD", "M", "S", "K", "GM", "GK", "SG", "P"
 					}
@@ -175,52 +120,47 @@ public class FrameTwo extends JFrame {
 			model.addRow(row_data);
 		}
 		
-		table.setModel(model);
-		Klasemen.setViewportView(table);
+		klasemenTabel.setModel(model);
+		Klasemen.setViewportView(klasemenTabel);
 		
-		JButton btnNewButton = new JButton("Update");
-		btnNewButton.setBounds(12, 5, 80, 27);
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton UpdateBtn = new JButton("Update");
+		UpdateBtn.setBounds(12, 5, 80, 27);
+		UpdateBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int z=0;
 				for(int i=0; i<match.getjmlPertandingan(); i++) {
 						if(list_score.get(z).getText().isEmpty() || list_score.get(z+1).getText().isEmpty()) {
+							//System.out.println("empty....");
+							match.getPertandingan(i).setplayed(false);
+							match.getPertandingan(i).setteamHomeScore(0);
+							match.getPertandingan(i).setteamAwayScore(0);
 							z+=2;
 							continue;
 						}
+						//Assignment score untuk club di pertandingam
+						match.getPertandingan(i).setplayed(true);
 						match.getPertandingan(i).setteamHomeScore(Integer.parseInt(list_score.get(z).getText()));
 						match.getPertandingan(i).setteamAwayScore(Integer.parseInt(list_score.get(z+1).getText()));
 						//System.out.println(list_score.get(z).getText()+list_score.get(z+1).getText());
 						System.out.println(match.getPertandingan(i).getteamHomeScore()+"--"+match.getPertandingan(i).getteamAwayScore());
 						z+=2;	//update index for list_scoreimport java.awt.EventQueue;
-					
-					
+						
 				}
+				match.UpdateClub();
+				model.setRowCount(0);
+				for(int i=0; i<match.getjmlClub(); i++) {
+					Object[] row_data = {String.valueOf(i+1), match.getClub(i).getNama(), "0", String.valueOf(match.getClub(i).getmenang()), String.valueOf(match.getClub(i).getseri()), 
+							String.valueOf(match.getClub(i).getkalah()), String.valueOf(match.getClub(i).getgoal()), String.valueOf(match.getClub(i).getbobol()),
+							String.valueOf(match.getClub(i).getselisihGoal()), String.valueOf(match.getClub(i).getpoin())};
+					model.addRow(row_data);
+				}
+				//klasemenTabel.revalidate();
+				//klasemenTabel.repaint();
 			}
 		});
 		contentPane.setLayout(null);
-		contentPane.add(btnNewButton);
+		contentPane.add(UpdateBtn);
 		contentPane.add(tabbedPane);
-		
-		JScrollPane scrollPane_2 = new JScrollPane();
-		tabbedPane.addTab("New tab", null, scrollPane_2, null);
-		
-		table_1 = new JTable();
-		table_1.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"tes", "dff", null, null},
-				{null, null, null, null},
-				{null, null, "vfv", null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-			},
-			new String[] {
-				"New column", "New column", "New column", "New column"
-			}
-		));
-		scrollPane_2.setViewportView(table_1);
 		for(int i=0; i<jml_pertandingan; i++) {
 			JPanel pert = new JPanel();		//panel pert(per baris)
 			pert.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -245,7 +185,7 @@ public class FrameTwo extends JFrame {
 			lblTimKanan.setBounds(280, 12, 125, 17);
 			list_pert.get(i).add(lblTimKanan);
 			
-			txtScore = new JTextField();
+			JTextField txtScore = new JTextField();
 			txtScore.setHorizontalAlignment(SwingConstants.CENTER);
 			txtScore.setText(null);
 			txtScore.setBounds(155, 10, 21, 21);
@@ -266,7 +206,6 @@ public class FrameTwo extends JFrame {
 			lblvsCenter.setBounds(202, 10, 27, 17);
 			list_pert.get(i).add(lblvsCenter);
 		}
-		
 		//scrollPane.setSize(getPreferredSize());
 		//scrollPane.add(panellist);
 	}

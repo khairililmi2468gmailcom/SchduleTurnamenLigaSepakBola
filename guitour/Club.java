@@ -57,7 +57,7 @@ public class Club {
     public void setgoal(int i){
         goal = i;
     }
-    public void setSkorBobol(int i){
+    public void setbobol(int i){
         bobol = i;
     }
     public void setPoin(int i){
