@@ -160,11 +160,15 @@ public class FrameTwo extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int z=0;
 				for(int i=0; i<match.getjmlPertandingan(); i++) {
+						if(list_score.get(z).getText().isEmpty() || list_score.get(z+1).getText().isEmpty()) {
+							z+=2;
+							continue;
+						}
 						match.getPertandingan(i).setteamHomeScore(Integer.parseInt(list_score.get(z).getText()));
 						match.getPertandingan(i).setteamAwayScore(Integer.parseInt(list_score.get(z+1).getText()));
 						//System.out.println(list_score.get(z).getText()+list_score.get(z+1).getText());
 						System.out.println(match.getPertandingan(i).getteamHomeScore()+"--"+match.getPertandingan(i).getteamAwayScore());
-						z+=2;	//update index for list_score
+						z+=2;	//update index for list_scoreimport java.awt.EventQueue;
 					
 					
 				}
