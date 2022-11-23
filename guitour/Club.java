@@ -1,6 +1,7 @@
 package guitour;
 
 public class Club {
+    private int rank;
     private String nama;
     private int matchPertandingan;
     private int menang;
@@ -12,6 +13,9 @@ public class Club {
     private int poin;
     public Club(String nama){
         this.nama = nama;
+    }
+    public int getrank(){
+        return rank;
     }
     public String getNama(){
         return this.nama;
@@ -41,6 +45,9 @@ public class Club {
     }
     public int getmatchPertandingan() {
         return matchPertandingan;
+    }
+    public void setrank(int rank){
+        this.rank=rank;
     }
     public void setNama(String nama){
         this.nama=nama;

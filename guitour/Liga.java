@@ -1,6 +1,9 @@
 package guitour;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.*;
+import java.lang.*;
 
 public class Liga {
     ArrayList<Pertandingan> listPertandingan = new ArrayList<Pertandingan>();
@@ -98,32 +101,52 @@ public class Liga {
     	return listClub.get(x);
     }
     public void UpdateClub(){
-        int temp = 0;
-        int goal = 0;
-        int bobol = 0;
-        // for(int i = 0; i<jmlClub; i++){
-        //     for(int j=i+1; j<jmlClub; j++){
-        //             homescore += getPertandingan(temp).getteamHomeScore();
-        //             awayscore += getPertandingan(temp).getteamAwayScore();
-        //             System.out.println("Match ke "+ temp+ " Updated");
-        //             listClub.get(i).setgoal(homescore);
-        //             //listClub.get(j).setgoal(getPertandingan(temp).getteamAwayScore()); 
-        //             System.out.println(getPertandingan(temp).getteamHomeScore()+"-"+getPertandingan(temp).getteamAwayScore());
-        //             temp++;    
-        //     }
-        //     homescore=0;
-        // }
-        for(int i = 0; i<jmlClub; i++){
-            for(int j=i+1; j<jmlClub; j++){
-                goal += getPertandingan(temp).getteamHomeScore();
-                bobol += getPertandingan(temp).getteamAwayScore();
-                temp++;
-                
-            }
-            listClub.get(i).setbobol(bobol);
-            listClub.get(i).setgoal(goal);
-            goal=0;
+        System.out.println("Update");
+        for(int i=0; i<jmlClub; i++){
+            listClub.get(i).setgoal(0);
+            listClub.get(i).setbobol(0);
+            listClub.get(i).setmenang(0);
+            listClub.get(i).setkalah(0);
+            listClub.get(i).setseri(0);
+            listClub.get(i).setmatchPertandingan(0);
         }
+        //Update goal and bobol
+        for(int i = 0; i<jmlPertandingan; i++){
+                    getPertandingan(i).getteamHome().setgoal(getPertandingan(i).getteamHome().getgoal()+getPertandingan(i).getteamHomeScore());
+                    getPertandingan(i).getteamHome().setbobol(getPertandingan(i).getteamHome().getbobol()+getPertandingan(i).getteamHomeScore());
+                    getPertandingan(i).getteamAway().setgoal(getPertandingan(i).getteamAway().getgoal()+getPertandingan(i).getteamAwayScore());
+                    getPertandingan(i).getteamAway().setbobol(getPertandingan(i).getteamAway().getbobol()+getPertandingan(i).getteamAwayScore());
+        }
+        //Update jml_pert, menang, seri, kalah
+        for(int i=0; i<jmlPertandingan; i++){
+            if(getPertandingan(i).getplayed()){
+                getPertandingan(i).getteamAway().setmatchPertandingan(getPertandingan(i).getteamAway().getmatchPertandingan()+1);
+                getPertandingan(i).getteamHome().setmatchPertandingan(getPertandingan(i).getteamHome().getmatchPertandingan()+1);
+            }
+            if(getPertandingan(i).getteamHomeScore()>getPertandingan(i).getteamAwayScore()){
+                System.out.println(getPertandingan(i).getteamHomeScore()+"-"+getPertandingan(i).getteamAwayScore());
+                getPertandingan(i).getteamHome().setmenang(getPertandingan(i).getteamHome().getmenang()+1);//add win+=1
+                getPertandingan(i).getteamAway().setkalah(getPertandingan(i).getteamAway().getkalah()+1);//add lose+=1
+            }else if(getPertandingan(i).getteamHomeScore()<getPertandingan(i).getteamAwayScore()){
+                getPertandingan(i).getteamAway().setmenang(getPertandingan(i).getteamAway().getmenang()+1);
+                getPertandingan(i).getteamHome().setkalah(getPertandingan(i).getteamHome().getkalah()+1);
+            }else if(getPertandingan(i).getplayed() && getPertandingan(i).getteamHomeScore()==getPertandingan(i).getteamAwayScore()){
+                getPertandingan(i).getteamAway().setseri(getPertandingan(i).getteamAway().getseri()+1);
+                getPertandingan(i).getteamHome().setseri(getPertandingan(i).getteamHome().getseri()+1);
+            }
+        }
+        sortClub();
+
+    }
+    public void sortClub(){
+       System.out.println("Sort..");
+       Collections.sort(listClub, new Comparator<Club>() {
+           @Override
+           public int compare(Club c1, Club c2) {
+               return -String.valueOf(c1.getpoin()).compareTo(String.valueOf(c2.getpoin()));
+           }
+       });
+
     }
 
 }

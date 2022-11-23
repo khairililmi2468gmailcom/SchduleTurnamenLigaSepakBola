@@ -149,7 +149,7 @@ public class FrameTwo extends JFrame {
 				match.UpdateClub();
 				model.setRowCount(0);
 				for(int i=0; i<match.getjmlClub(); i++) {
-					Object[] row_data = {String.valueOf(i+1), match.getClub(i).getNama(), "0", String.valueOf(match.getClub(i).getmenang()), String.valueOf(match.getClub(i).getseri()), 
+					Object[] row_data = {String.valueOf(i+1), match.getClub(i).getNama(), String.valueOf(match.getClub(i).getmatchPertandingan()), String.valueOf(match.getClub(i).getmenang()), String.valueOf(match.getClub(i).getseri()), 
 							String.valueOf(match.getClub(i).getkalah()), String.valueOf(match.getClub(i).getgoal()), String.valueOf(match.getClub(i).getbobol()),
 							String.valueOf(match.getClub(i).getselisihGoal()), String.valueOf(match.getClub(i).getpoin())};
 					model.addRow(row_data);
