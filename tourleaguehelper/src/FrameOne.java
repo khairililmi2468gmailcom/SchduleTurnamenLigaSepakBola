@@ -1,4 +1,3 @@
-package guitour;
 
 
 import java.awt.Color;

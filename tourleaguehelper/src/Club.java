@@ -1,4 +1,3 @@
-package guitour;
 
 
 public class Club {
