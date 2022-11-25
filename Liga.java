@@ -1,9 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Arrays;
 import java.util.*;
-import java.lang.*;
 
 public class Liga {
     ArrayList<Pertandingan> listPertandingan = new ArrayList<Pertandingan>();
@@ -74,7 +72,7 @@ public class Liga {
      * @param textList
      */
     public void generateClubs(String textList){
-        String[] clubNames = textList.split(System.lineSeparator());
+        String[] clubNames = textList.split("\\R");
         for(int i=0; i<clubNames.length; i++){
             if(clubNames[i] == "") continue;
             listClub.add(new Club(clubNames[i]));

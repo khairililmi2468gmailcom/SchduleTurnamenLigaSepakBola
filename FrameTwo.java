@@ -7,21 +7,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import java.awt.Color;
-import javax.swing.JComboBox;
-import javax.swing.JList;
 import javax.swing.JTable;
-import java.awt.FlowLayout;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.ListSelectionModel;
-import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
 import javax.swing.ScrollPaneConstants;
-import java.awt.GridLayout;
 import java.util.ArrayList;
-import java.util.Vector;
-
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 import java.awt.GridBagLayout;
@@ -34,13 +26,10 @@ import javax.swing.UIManager;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.border.BevelBorder;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.Dimension;
 
 public class FrameTwo extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private String list_club;
 	private JTable klasemenTabel;
@@ -70,7 +59,7 @@ public class FrameTwo extends JFrame {
 	public FrameTwo(String list_str) {
 		setlist_club(list_str);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		UIManager.put("TabbedPane.selected", Color.DARK_GRAY);
+		//UIManager.put("TabbedPane.selected", Color.DARK_GRAY);
 		setBounds(100, 100, 450, 350);
 		setResizable(false);
 		contentPane = new JPanel();

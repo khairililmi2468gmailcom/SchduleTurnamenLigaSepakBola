@@ -6,30 +6,19 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import java.awt.Font;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import java.awt.Window.Type;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
-import javax.swing.UIManager;
-import javax.swing.border.LineBorder;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
-import java.awt.Component;
 import java.awt.Insets;
 import java.awt.SystemColor;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
+@SuppressWarnings("serial")
 public class FrameOne extends JFrame {
 
 	private JPanel contentPane;
@@ -96,13 +85,13 @@ public class FrameOne extends JFrame {
 		contentPane.add(lblInf);
 		
 		JButton btnEnter = new JButton("Enter");
-		btnEnter.setForeground(UIManager.getColor("Button.highlight"));
+		btnEnter.setForeground(Color.WHITE);
 		btnEnter.setBackground(new Color(36, 160, 237));
 		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				String list_club=txtrHere.getText();
-				//System.out.print(list_club);
+				System.out.println("List Team : \n"+list_club+"\n====\n");
 				//System.out.println("Hey BRo");
 				FrameTwo ft = new FrameTwo(list_club);
 				ft.setVisible(true);
@@ -118,13 +107,13 @@ public class FrameOne extends JFrame {
 		contentPane.add(lblTourHelper);
 		
 		JLabel lblTourname = new JLabel("Tour name");
-		lblTourname.setFont(new Font("Monospaced", Font.BOLD, 12));
+		//lblTourname.setFont(new Font("Monospaced", Font.BOLD, 12));
 		lblTourname.setBackground(Color.darkGray);
 		lblTourname.setBounds(63, 24, 64, 17);
 		contentPane.add(lblTourname);
 		
 		textField = new JTextField();
-		textField.setFont(new Font("Monospaced", Font.PLAIN, 13));
+		//textField.setFont(new Font("Monospaced", Font.PLAIN, 13));
 		textField.setForeground(SystemColor.textHighlight);
 		//textField.setText("Asian Cup");
 		textField.setMargin(new Insets(0, 2, 0, 0));
