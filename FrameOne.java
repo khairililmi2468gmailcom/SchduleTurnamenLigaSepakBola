@@ -15,7 +15,6 @@ import javax.swing.JTextArea;
 import java.awt.Insets;
 import java.awt.SystemColor;
 
-@SuppressWarnings("serial")
 public class FrameOne extends JFrame {
 
 	private JPanel contentPane;
