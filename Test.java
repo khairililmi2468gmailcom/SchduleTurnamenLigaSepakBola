@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
-@SuppressWarnings("serial")
+
 public class Test extends JPanel {
 
     private boolean drag = false;
