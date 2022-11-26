@@ -111,9 +111,9 @@ public class Liga {
         //Update goal and bobol
         for(int i = 0; i<jmlPertandingan; i++){
                     getPertandingan(i).getteamHome().setgoal(getPertandingan(i).getteamHome().getgoal()+getPertandingan(i).getteamHomeScore());
-                    getPertandingan(i).getteamHome().setbobol(getPertandingan(i).getteamHome().getbobol()+getPertandingan(i).getteamHomeScore());
+                    getPertandingan(i).getteamHome().setbobol(getPertandingan(i).getteamHome().getbobol()+getPertandingan(i).getteamAwayScore());
                     getPertandingan(i).getteamAway().setgoal(getPertandingan(i).getteamAway().getgoal()+getPertandingan(i).getteamAwayScore());
-                    getPertandingan(i).getteamAway().setbobol(getPertandingan(i).getteamAway().getbobol()+getPertandingan(i).getteamAwayScore());
+                    getPertandingan(i).getteamAway().setbobol(getPertandingan(i).getteamAway().getbobol()+getPertandingan(i).getteamHomeScore());
         }
         //Update jml_pert, menang, seri, kalah
         for(int i=0; i<jmlPertandingan; i++){
