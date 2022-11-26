@@ -25,7 +25,7 @@ public class FrameOne extends JFrame {
 	private JTextField textField;
 
 	/**
-	 * Launch the application.
+	 * Method untuk menjalankan program frame pertama
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -41,7 +41,7 @@ public class FrameOne extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Method untuk membuat frame
 	 */
 	public FrameOne() {
 		//setVisible(true);
