@@ -24,13 +24,23 @@ public class Liga {
         //getListClub();
         //getListPertandingan();
     }
-
+    /**
+     * method setter untuk menyimpan jumlah club
+     * @param jml
+     */
     public void setjmlClub(int jml){
         this.jmlClub = jml;
     }
+    /**
+     * method untuk menyimpan jumlah pertandingan
+     * @param jml
+     */
     public void setjmlPertandingan(int jml){
         this.jmlPertandingan = jml;
     }
+    /**
+     * method untuk menyusun pertandingan 
+     */
     public void generatePertandingan(){
         if(listClub.isEmpty()){
             System.out.println("Clubs belum ada!");
@@ -47,9 +57,17 @@ public class Liga {
             jmlPertandingan=listPertandingan.size();
         }
     }
+    /**
+     *  method getter untuk mendapatkan nilai jumlah pertandingan yang tercipta
+     * @return
+     */
     public int getjmlPertandingan(){
         return jmlPertandingan;
     }
+    /**
+     * method getter untuk mendapatkan nilai jumlah club yang diinput 
+     * @return
+     */
     public int getjmlClub(){
         return jmlClub;
     }
@@ -80,24 +98,43 @@ public class Liga {
         }
         jmlClub=listClub.size();
     }
+    /**
+     * method getter untuk mendapatkan nilai list klub 
+     */
     public void getListClub(){
         System.out.println("List Club : ");
         for(int i=0; i<listClub.size(); i++){
             System.out.println(listClub.get(i));
         }
     }
+    /**
+     * method getter untuk mendapatkan list pertandingan
+     */
     public void getListPertandingan(){
         System.out.println("List Pertandingan : ");
         for(int i=0; i<listPertandingan.size(); i++){
             System.out.println(listPertandingan.get(i));
         }
     }
+    /**
+     * method getter  untuk mendapatkan pertandingan
+     * @param x
+     * @return listPertandingan.get
+     */
     public Pertandingan getPertandingan(int x){
         return listPertandingan.get(x);
     }
+    /**
+     * method getter untuk mendapatkan nilai club
+     * @param x
+     * @return listCLub
+     */
     public Club getClub(int x) {
     	return listClub.get(x);
     }
+    /**
+     * method untuk mengupdate club
+     */
     public void UpdateClub(){
         System.out.println("Update");
         for(int i=0; i<jmlClub; i++){
@@ -136,6 +173,9 @@ public class Liga {
         sortClub();
 
     }
+    /**
+     * method untuk menyorting club
+     */
     public void sortClub(){
        System.out.println("Sort..");
        Collections.sort(listClub, new Comparator<Club>() {
