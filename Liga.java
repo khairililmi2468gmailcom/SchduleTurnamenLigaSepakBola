@@ -145,16 +145,16 @@ public class Liga {
             listClub.get(i).setseri(0);
             listClub.get(i).setmatchPertandingan(0);
         }
-                    //Update goal and bobol
-             for(int i = 0; i<jmlPertandingan; i++){
+        //Update goal and bobol
+        for(int i = 0; i<jmlPertandingan; i++){
                     getPertandingan(i).getteamHome().setgoal(getPertandingan(i).getteamHome().getgoal()+getPertandingan(i).getteamHomeScore());
                     getPertandingan(i).getteamHome().setbobol(getPertandingan(i).getteamHome().getbobol()+getPertandingan(i).getteamAwayScore());
                     getPertandingan(i).getteamAway().setgoal(getPertandingan(i).getteamAway().getgoal()+getPertandingan(i).getteamAwayScore());
                     getPertandingan(i).getteamAway().setbobol(getPertandingan(i).getteamAway().getbobol()+getPertandingan(i).getteamHomeScore());
-        
-                    //Update jml_pert, menang, seri, kalah
-             for(int i=0; i<jmlPertandingan; i++){
-             if(getPertandingan(i).getplayed()){
+        }
+        //Update jml_pert, menang, seri, kalah
+        for(int i=0; i<jmlPertandingan; i++){
+            if(getPertandingan(i).getplayed()){
                 getPertandingan(i).getteamAway().setmatchPertandingan(getPertandingan(i).getteamAway().getmatchPertandingan()+1);
                 getPertandingan(i).getteamHome().setmatchPertandingan(getPertandingan(i).getteamHome().getmatchPertandingan()+1);
             }
@@ -188,4 +188,3 @@ public class Liga {
     }
 
 }
-
