@@ -1,1 +1,1 @@
-How to run :\njava -jar guitour.jar
+How to run :\njava -jar tourhelper.jar
