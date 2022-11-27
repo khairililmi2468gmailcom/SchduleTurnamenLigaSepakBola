@@ -1,5 +1,3 @@
-package guitour;
-
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,14 +5,19 @@ import java.util.Date;
 
 
 public class Pertandingan {
-    
+    private boolean played;
     private Club teamHome;
     private Club teamAway;
     private int teamHomeScore;
     private int teamAwayScore;
     private Date date;
     
-    
+    public boolean getplayed(){
+        return played;
+    }    
+    public void setplayed(boolean play){
+        this.played = play;
+    }
     public Club getteamHome() {
         return teamHome;
     }
